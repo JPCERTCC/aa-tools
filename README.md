@@ -22,3 +22,6 @@ Artifact analysis tools by JPCERT/CC Analysis Center
   Article/Blog entry:   
   http://www.jpcert.or.jp/magazine/acreport-emdivi.html (Japanese)   
   http://blog.jpcert.or.jp/2015/11/decrypting-strings-in-emdivi.html (English)
+
+## Citadel Decryptor
+  Data decryption tool for Citadel
