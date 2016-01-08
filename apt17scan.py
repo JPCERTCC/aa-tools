@@ -153,7 +153,7 @@ class apt17Scan(taskmods.DllList):
                                   ("Data VA", "[addrpad]"),
                                   ("Malware Name", "13")])
 
-        for task, start, malname in data:
+        for task, start, malname, memory_model in data:
             self.table_row(outfd, task.ImageFileName, task.UniqueProcessId, start, malname)
 
 class derusbiConfig(apt17Scan):
@@ -298,7 +298,7 @@ class agtidConfig(apt17Scan):
 
         delim = '-' * 70
 
-        for task, start, malname in data:
+        for task, start, malname, memory_model in data:
             if "Agtid" in str(malname):
                 proc_addr_space = task.get_process_address_space()
 
@@ -411,7 +411,7 @@ class hikitConfig(apt17Scan):
 
         delim = '-' * 70
 
-        for task, start, malname in data:
+        for task, start, malname, memory_model in data:
             if "Hikit" in str(malname):
                 proc_addr_space = task.get_process_address_space()
 
