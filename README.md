@@ -25,3 +25,7 @@ Artifact analysis tools by JPCERT/CC Analysis Center
 
 ## Citadel Decryptor
   Data decryption tool for Citadel
+
+  Article/Blog entry:   
+  http://www.jpcert.or.jp/magazine/acreport-citadel.html (Japanese)   
+  http://blog.jpcert.or.jp/2016/02/banking-trojan--27d6.html (English)
