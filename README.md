@@ -32,3 +32,12 @@ Artifact analysis tools by JPCERT/CC Analysis Center
 
 ## adwind_string_decoder.py
   Python script for decoding strings inside Adwind
+
+  Article/Blog entry:   
+  https://www.jpcert.or.jp/magazine/acreport-adwind.html (Japanese)
+
+## impfuzzy
+  Impfuzzy is Fuzzy Hash calculated from import API of PE files
+
+  Article/Blog entry:   
+  https://www.jpcert.or.jp/magazine/acreport-impfuzzy.html (Japanese)
