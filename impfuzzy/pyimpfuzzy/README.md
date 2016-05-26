@@ -2,7 +2,8 @@
   Python module for comparing the impfuzzy
 
   More details are described in the following documents:   
-  https://www.jpcert.or.jp/magazine/acreport-impfuzzy.html (Japanese)
+  https://www.jpcert.or.jp/magazine/acreport-impfuzzy.html (Japanese)   
+  http://blog.jpcert.or.jp/2016/05/classifying-mal-a988.html (English)
 
 ## Requirements
   pyimpfuzzy requires the following modules:
