@@ -65,13 +65,13 @@ def interpret_key(jasm):
                     jstack.pop()
                     jstack.append([])
                 elif op[1] == 'invokespecial':
-                    if op[5] == 'java/lang/Exception."<init>":()V':
+                    if re.match('java/lang/(Throwable|Exception)\."<init>":\(\)V', op[5]):
                         jstack.pop()
                     elif op[5] == 'java/lang/StringBuffer."<init>":(Ljava/lang/String;)V':
                         key1 = [jstack.pop()]
                         jstack.pop()
                 elif op[1] == 'invokevirtual':
-                    if op[5] == 'java/lang/Exception.getStackTrace:()[Ljava/lang/StackTraceElement;':
+                    if re.match('java/lang/(Throwable|Exception)\.getStackTrace:\(\)\[Ljava/lang/StackTraceElement;', op[5]):
                         jstack.pop()
                         jstack.append([])
                         key2 = []
@@ -273,7 +273,7 @@ def decode_strings(jasm, key, jstr, out):
                             del sstack[0]
                 elif op[1] == 'invokestatic':
                     func = op[5]
-                    if not '/' in func.split('(')[0]:
+                    if not '.' in func.split('(')[0]:
                         func = caller_class.replace('.', '/') + '.' + func
                     if func[0] == '"':
                         i = func.rindex('.')
