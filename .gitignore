@@ -1,0 +1,5 @@
+__pycache__/
+build/
+dist/
+pyimpfuzzy.egg-info/
+pyimpfuzzy.pyc

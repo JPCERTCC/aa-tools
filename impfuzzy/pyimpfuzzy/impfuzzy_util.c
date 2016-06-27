@@ -22,7 +22,7 @@ static PyObject * fuzzy_hash_data(PyObject *self, PyObject *args){
 
         i = fuzzy_hash_buf((unsigned char*)input, (uint32_t)inputsize, (char *)hashbuff);
         if (i == 0) {
-                Hash = PyString_FromString(hashbuff);
+                Hash = PyUnicode_FromString(hashbuff);
                 free(hashbuff);
                 return Hash;
         } else {
@@ -56,12 +56,43 @@ static PyMethodDef impfuzzyMethods[] = {
 
 static char doc[] = "Fuzzy hashing module";
 
-PyMODINIT_FUNC
-initimpfuzzyutil(void)
+#if PY_MAJOR_VERSION >= 3
+        static struct PyModuleDef moduledef = {
+                PyModuleDef_HEAD_INIT,
+                "impfuzzyutil",     /* m_name */
+                doc,                /* m_doc */
+                -1,                 /* m_size */
+                impfuzzyMethods,    /* m_methods */
+                NULL,               /* m_reload */
+                NULL,               /* m_traverse */
+                NULL,               /* m_clear */
+                NULL,               /* m_free */
+        };
+#endif
+
+static PyObject *
+impfuzzyutilinit(void)
 {
         PyObject* m;
-        m = Py_InitModule3("impfuzzyutil", impfuzzyMethods, doc);
+        #if PY_MAJOR_VERSION < 3
+                m = Py_InitModule3("impfuzzyutil", impfuzzyMethods, doc);
+        #else
+                m = PyModule_Create(&moduledef);
+        #endif
         impfuzzyError = PyErr_NewException("impfuzzy.Error", NULL, NULL);
         Py_INCREF(impfuzzyError);
         PyModule_AddObject(m, "error", impfuzzyError);
+        return m;
 }
+
+#if PY_MAJOR_VERSION < 3
+        PyMODINIT_FUNC initimpfuzzyutil(void)
+        {
+                impfuzzyutilinit();
+        }
+#else
+        PyMODINIT_FUNC PyInit_impfuzzyutil(void)
+        {
+                return impfuzzyutilinit();
+        }
+#endif
