@@ -1,4 +1,7 @@
-from distutils.core import setup, Extension
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+from setuptools import setup, Extension
+
 
 setup(
     name="pyimpfuzzy",
@@ -17,4 +20,5 @@ setup(
     )],
     py_modules=["pyimpfuzzy"],
     url="https://github.com/JPCERTCC/aa-tools/",
+    install_requires=['pefile']
 )

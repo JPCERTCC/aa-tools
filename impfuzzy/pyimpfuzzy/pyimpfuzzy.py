@@ -1,7 +1,5 @@
 #!/usr/bin/env python
 
-import os
-import sys
 import pefile
 import impfuzzyutil
 import ordlookup
@@ -13,11 +11,13 @@ def get_impfuzzy(file):
 
     return impfuzzyutil.hash_data(apilist)
 
+
 def get_impfuzzy_data(file):
     pe = pefileEx(data=file)
     apilist, apilen = pe.calc_impfuzzy()
 
     return impfuzzyutil.hash_data(apilist)
+
 
 def hash_compare(hash1, hash2):
     return impfuzzyutil.compare(hash1, hash2)
@@ -34,7 +34,10 @@ class pefileEx(pefile.PE):
         if not hasattr(self, "DIRECTORY_ENTRY_IMPORT"):
             return ""
         for entry in self.DIRECTORY_ENTRY_IMPORT:
-            libname = entry.dll.lower()
+            if isinstance(entry.dll, bytes):
+                libname = entry.dll.decode().lower()
+            else:
+                libname = entry.dll.lower()
             parts = libname.rsplit(".", 1)
             if len(parts) > 1 and parts[1] in exts:
                 libname = parts[0]
@@ -53,6 +56,8 @@ class pefileEx(pefile.PE):
                 if not funcname:
                     continue
 
+                if isinstance(funcname, bytes):
+                    funcname = funcname.decode()
                 impstrs.append("%s.%s" % (libname.lower(), funcname.lower()))
 
         apilist = ",".join(impstrs)
