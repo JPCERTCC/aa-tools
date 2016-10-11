@@ -153,7 +153,7 @@ def get_params(image):
     tmp = search_base_config(pe, data)
     if tmp == False:
         print "[!] base config search failed"
-        return False, False, False, False, False
+        return False, False, False, False, False, False
     base_config = ""
     for i in range(0, len(tmp)):
         base_config += chr(ord(tmp[i]) ^ ord(pe.sections[2].get_data()[i]))
