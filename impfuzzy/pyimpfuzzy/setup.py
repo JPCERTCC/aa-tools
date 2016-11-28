@@ -5,7 +5,7 @@ from setuptools import setup, Extension
 
 setup(
     name="pyimpfuzzy",
-    version="0.01",
+    version="0.02",
     author="JPCERT/CC Analysis Center",
     author_email="aa-info@jpcert.or.jp",
     license="the GNU General Public License version 2",

@@ -34,6 +34,7 @@ class pefileEx(pefile.PE):
         if not hasattr(self, "DIRECTORY_ENTRY_IMPORT"):
             return ""
         for entry in self.DIRECTORY_ENTRY_IMPORT:
+            no_iat_flag = False
             if isinstance(entry.dll, bytes):
                 libname = entry.dll.decode().lower()
             else:
@@ -42,16 +43,20 @@ class pefileEx(pefile.PE):
             if len(parts) > 1 and parts[1] in exts:
                 libname = parts[0]
 
+            if not entry.imports[0].struct_iat:
+                no_iat_flag = True
+
             for imp in entry.imports:
                 funcname = None
-                if not imp.name:
-                    funcname = ordlookup.ordLookup(
-                        entry.dll.lower(), imp.ordinal, make_name=True)
-                    if not funcname:
-                        raise Exception("Unable to look up ordinal %s:%04x" % (
-                            entry.dll, imp.ordinal))
-                else:
-                    funcname = imp.name
+                if imp.struct_iat or no_iat_flag:
+                    if not imp.name:
+                        funcname = ordlookup.ordLookup(
+                            entry.dll.lower(), imp.ordinal, make_name=True)
+                        if not funcname:
+                            raise Exception("Unable to look up ordinal %s:%04x" % (
+                                entry.dll, imp.ordinal))
+                    else:
+                        funcname = imp.name
 
                 if not funcname:
                     continue
