@@ -3,6 +3,10 @@
   This plugin can be used to scan malware in memory image.  
   Imphash see [FireEye Blog](https://www.fireeye.com/blog/threat-research/2014/01/tracking-malware-import-hashing.html)
 
+  More details are described in the following documents:   
+  https://www.jpcert.or.jp/magazine/acreport-impfuzzy_volatility.html (Japanese)   
+  http://blog.jpcert.or.jp/2016/12/a-new-tool-to-d-d6bc.html (English)
+
 ## Requirements
   This plugin requires the following modules:
 
