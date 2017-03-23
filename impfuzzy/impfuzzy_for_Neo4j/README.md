@@ -9,7 +9,8 @@
 
   More details are described in the following documents:   
   https://www.jpcert.or.jp/magazine/acreport-impfuzzy_neo4.html (Japanese)   
-  
+  http://blog.jpcert.or.jp/2017/03/malware-clustering-using-impfuzzy-and-network-analysis---impfuzzy-for-neo4j-.html (English)   
+
   ![impfuzzy for Neo4j sample](images/sample.png)
 
 ## Requirements
