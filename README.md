@@ -46,3 +46,7 @@ Artifact analysis tools by JPCERT/CC Analysis Center
 
 ## redleavesscan.py
   Volatility plugin for detecting RedLeaves and extracting its config
+
+  Article/Blog entry:   
+  https://www.jpcert.or.jp/magazine/acreport-redleaves2.html (Japanese)   
+  http://blog.jpcert.or.jp/2017/05/volatility-plugin-for-detecting-redleaves-malware.html (English)
