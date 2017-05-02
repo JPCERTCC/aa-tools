@@ -43,3 +43,6 @@ Artifact analysis tools by JPCERT/CC Analysis Center
   Article/Blog entry:   
   https://www.jpcert.or.jp/magazine/acreport-impfuzzy.html (Japanese)   
   http://blog.jpcert.or.jp/2016/05/classifying-mal-a988.html (English)
+
+## redleavesscan.py
+  Volatility plugin for detecting RedLeaves and extracting its config
