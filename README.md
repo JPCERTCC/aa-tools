@@ -57,10 +57,11 @@ Artifact analysis tools by JPCERT/CC Analysis Center
   
   Article/Blog entry:
   https://www.jpcert.or.jp/magazine/acreport-search-datper.html (Japanese)
+  http://blog.jpcert.or.jp/2017/09/chase-up-datper-bba7.html (English)
 
 ## datper-elk.py
   Python script for detects Datper communication and adds result field to Elasticsearch index
   
   Article/Blog entry:
   https://www.jpcert.or.jp/magazine/acreport-search-datper.html (Japanese)
-
+  http://blog.jpcert.or.jp/2017/09/chase-up-datper-bba7.html (English)
