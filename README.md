@@ -50,18 +50,20 @@ Artifact analysis tools by JPCERT/CC Analysis Center
   Article/Blog entry:   
   https://www.jpcert.or.jp/magazine/acreport-redleaves2.html (Japanese)   
   http://blog.jpcert.or.jp/2017/05/volatility-plugin-for-detecting-redleaves-malware.html (English)
-  
-  
+
 ## datper-splunk.py
   Python script for detects Datper communication and adds result field to Splunk index
-  
+
   Article/Blog entry:   
   https://www.jpcert.or.jp/magazine/acreport-search-datper.html (Japanese)   
   http://blog.jpcert.or.jp/2017/09/chase-up-datper-bba7.html (English)   
 
 ## datper-elk.py
   Python script for detects Datper communication and adds result field to Elasticsearch index
-  
+
   Article/Blog entry:   
   https://www.jpcert.or.jp/magazine/acreport-search-datper.html (Japanese)   
   http://blog.jpcert.or.jp/2017/09/chase-up-datper-bba7.html (English)   
+
+## tscookie_decode.py
+  Python script for decrypting and parsing TSCookie configure data
