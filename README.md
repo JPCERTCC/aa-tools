@@ -37,13 +37,6 @@ Artifact analysis tools by JPCERT/CC Analysis Center
   https://www.jpcert.or.jp/magazine/acreport-adwind.html (Japanese)   
   http://blog.jpcert.or.jp/2016/05/decoding-obfuscated-strings-in-adwind.html (English)
 
-## impfuzzy
-  Impfuzzy is Fuzzy Hash calculated from import API of PE files
-
-  Article/Blog entry:   
-  https://www.jpcert.or.jp/magazine/acreport-impfuzzy.html (Japanese)   
-  http://blog.jpcert.or.jp/2016/05/classifying-mal-a988.html (English)
-
 ## redleavesscan.py
   Volatility plugin for detecting RedLeaves and extracting its config
 
@@ -67,3 +60,7 @@ Artifact analysis tools by JPCERT/CC Analysis Center
 
 ## tscookie_decode.py
   Python script for decrypting and parsing TSCookie configure data
+
+  Article/Blog entry:   
+  https://www.jpcert.or.jp/magazine/acreport-tscookie.html (Japanese)   
+  http://blog.jpcert.or.jp/2018/03/malware-tscooki-7aa0.html (English)   

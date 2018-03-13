@@ -16,6 +16,7 @@ MZ_HEADER = b"\x4D\x5A\x90\x00"
 # Resource pattern
 RESOURCE_PATTERNS = [re.compile("\x50\x68(....)\x68(.)\x00\x00\x00(.)\xE8", re.DOTALL),
                      re.compile("(.)\x68(...)\x00\x68(.)\x00\x00\x00\x6A\x00\xE8(....)\x83(..)\xC3", re.DOTALL),
+                     re.compile("(.)\x68(...)\x00\x68(.)\x00\x00\x00\x50\xE8(....)\x83(..)\xC3", re.DOTALL),
                      re.compile("\x04(.....)\x68(.)\x00\x00\x00\x6A\x00\xE8", re.DOTALL),
                      re.compile("\x56\xBE(....)\x56\x68(.)\x00\x00\x00\x6A\x00\xE8", re.DOTALL),
                      re.compile("\x53\x68(....)\x6A(.)\x56\xFF", re.DOTALL)]

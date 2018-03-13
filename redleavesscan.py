@@ -44,6 +44,11 @@ redleaves_sig = {
                     strings: \
                        $a1 = {C7 ?? ?? 41 72 6D 61 } \
                        $a2 = {C7 ?? ?? 64 69 6C 6C } \
+                    condition: $a1 and $a2}',
+    'namespace5' : 'rule zark20rk { \
+                    strings: \
+                       $a1 = {C7 ?? ?? 7A 61 72 6B } \
+                       $a2 = {C7 ?? ?? 32 30 72 6B } \
                     condition: $a1 and $a2}'
 }
 
@@ -51,6 +56,7 @@ CONF_PATTERNS = [["RedLeaves", re.compile("\x68\x88\x13\x00\x00\xFF", re.DOTALL)
                  ["Himawari", re.compile("\x68\x70\x03\x00\x00\xBF", re.DOTALL)],
                  ["Lavender", re.compile("\x68\x70\x03\x00\x00\xBF", re.DOTALL)],
                  ["Armadill", re.compile("\x68\x70\x03\x00\x00\xBF", re.DOTALL)],
+                 ["zark20rk", re.compile("\x68\x70\x03\x00\x00\x8D", re.DOTALL)],
                  ]
 
 CONNECT_MODE = {1 : 'TCP' , 2 : 'HTTP', 3 : 'HTTPS', 4 : 'TCP and HTTP'}
@@ -227,8 +233,10 @@ class redleavesConfig(redleavesScan):
                 if len(config_data) > 0:
                     self.parse_config(config_data, config_size, config_addr, outfd)
 
-            if str(malname) in ["Himawari", "Lavender", "Armadill"]:
+            if str(malname) in ["Himawari", "Lavender", "Armadill", "zark20rk"]:
                 offset_conf += 6
+                if str(malname) in ["zark20rk"]:
+                    offset_conf += 6
                 config_size = 880
 
                 # get address
