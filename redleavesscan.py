@@ -160,9 +160,9 @@ class redleavesConfig(redleavesScan):
         server3 = unpack_from('<64s', cfg_blob, 0x84)[0]
         server4 = unpack_from('<64s', cfg_blob, 0xC4)[0]
         port = unpack_from('<I', cfg_blob, 0x104)[0]
-        unknown1 = unpack_from('<64s', cfg_blob, 0x10C)[0]
-        unknown2 = unpack_from('<64s', cfg_blob, 0x14C)[0]
-        unknown3 = unpack_from('<64s', cfg_blob, 0x18C)[0]
+        proxy = unpack_from('<64s', cfg_blob, 0x10C)[0]
+        puser = unpack_from('<64s', cfg_blob, 0x14C)[0]
+        ppass = unpack_from('<64s', cfg_blob, 0x18C)[0]
         sleep1 = unpack_from('<I', cfg_blob, 0x1D0)[0]
         sleep2 = unpack_from('<I', cfg_blob, 0x1D4)[0]
         mode = unpack_from('<I', cfg_blob, 0x1D8)[0]
@@ -179,14 +179,14 @@ class redleavesConfig(redleavesScan):
         outfd.write("Server3\t\t\t: %s\n" % server3.split('\0')[0])
         outfd.write("Server4\t\t\t: %s\n" % server4.split('\0')[0])
         outfd.write("Port\t\t\t: %i\n" % port)
-        outfd.write("Mode\t\t\t: %i \n" % (mode))
+        outfd.write("Mode\t\t\t: %i (%s)\n" % (mode, CONNECT_MODE[mode]))
         outfd.write("ID\t\t\t: %s\n" % id.split('\0')[0])
         outfd.write("Mutex\t\t\t: %s\n" % mutex.replace('\0',''))
         outfd.write("Key\t\t\t: %s\n" % key.split('\0')[0])
-        outfd.write("UserAgent\t\t\t: %s\n" % ua.split('\0')[0])
-        outfd.write("unknown1\t\t\t: %s\n" % repr(unknown1))
-        outfd.write("unknown2\t\t\t: %s\n" % repr(unknown2))
-        outfd.write("unknown3\t\t\t: %s\n" % repr(unknown3))
+        outfd.write("UserAgent\t\t: %s\n" % ua.split('\0')[0])
+        outfd.write("Proxy\t\t\t: %s\n" %  proxy.split('\0')[0])
+        outfd.write("Username\t\t: %s\n" %  puser.split('\0')[0])
+        outfd.write("Password\t\t: %s\n" %  ppass.split('\0')[0])
 
     def render_text(self, outfd, data):
 
