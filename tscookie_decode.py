@@ -23,7 +23,9 @@ RESOURCE_PATTERNS = [re.compile("\x50\x68(....)\x68(.)\x00\x00\x00(.)\xE8", re.D
 
 # RC4 key pattern
 RC4_KEY_PATTERNS = [re.compile("\x80\x68\x80\x00\x00\x00\x50\xC7\x40", re.DOTALL),
-                    re.compile("\x80\x68\x80\x00\x00\x00(...)\x50\x52\x53\xC7\x40", re.DOTALL)]
+                    re.compile("\x80\x68\x80\x00\x00\x00(...)\x50\x52\x53\xC7\x40", re.DOTALL),
+                    re.compile("\x8D(..)\x80\xC7\x43", re.DOTALL)
+                    ]
 RC4_KEY_LENGTH = 0x80
 
 # Config pattern
