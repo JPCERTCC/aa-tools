@@ -64,3 +64,6 @@ Artifact analysis tools by JPCERT/CC Analysis Center
   Article/Blog entry:   
   https://www.jpcert.or.jp/magazine/acreport-tscookie.html (Japanese)   
   http://blog.jpcert.or.jp/2018/03/malware-tscooki-7aa0.html (English)   
+
+## wellmess_cookie_decode.py
+  Python script for decoding WellMess's cookie data (support Python2)  
