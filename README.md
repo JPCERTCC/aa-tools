@@ -67,3 +67,6 @@ Artifact analysis tools by JPCERT/CC Analysis Center
 
 ## wellmess_cookie_decode.py
   Python script for decoding WellMess's cookie data (support Python2)  
+  
+## cobaltstrikescan.py
+  Volatility plugin for detecting Cobalt Strike Beacon and extracting its config
