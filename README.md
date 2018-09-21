@@ -70,3 +70,7 @@ Artifact analysis tools by JPCERT/CC Analysis Center
   
 ## cobaltstrikescan.py
   Volatility plugin for detecting Cobalt Strike Beacon and extracting its config
+  
+  Article/Blog entry:   
+  https://www.jpcert.or.jp/magazine/acreport-cobaltstrike.html (Japanese)   
+  https://blog.jpcert.or.jp/2018/08/volatility-plugin-for-detecting-cobalt-strike-beacon.html (English) 
