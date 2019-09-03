@@ -67,10 +67,20 @@ Artifact analysis tools by JPCERT/CC Analysis Center
 
 ## wellmess_cookie_decode.py
   Python script for decoding WellMess's cookie data (support Python2)  
-  
+
+  Article/Blog entry:   
+  https://blogs.jpcert.or.jp/ja/2018/06/wellmess.html (Japanese)   
+  https://blogs.jpcert.or.jp/en/2018/07/malware-wellmes-9b78.html (English)   
+
 ## cobaltstrikescan.py
   Volatility plugin for detecting Cobalt Strike Beacon and extracting its config
-  
+
   Article/Blog entry:   
   https://www.jpcert.or.jp/magazine/acreport-cobaltstrike.html (Japanese)   
-  https://blog.jpcert.or.jp/2018/08/volatility-plugin-for-detecting-cobalt-strike-beacon.html (English) 
+  https://blog.jpcert.or.jp/2018/08/volatility-plugin-for-detecting-cobalt-strike-beacon.html (English)
+
+## tscookie_data_decode.py
+  Python script for decrypting and parsing TSCookie configure data
+
+  Article/Blog entry:   
+  https://blogs.jpcert.or.jp/ja/2019/09/tscookie_loader.html (Japanese)   
