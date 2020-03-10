@@ -19,19 +19,23 @@ RESOURCE_PATTERNS = [re.compile("\x50\x68(....)\x68(.)\x00\x00\x00(.)\xE8", re.D
                      re.compile("(.)\x68(...)\x00\x68(.)\x00\x00\x00\x50\xE8(....)\x83(..)\xC3", re.DOTALL),
                      re.compile("\x04(.....)\x68(.)\x00\x00\x00\x6A\x00\xE8", re.DOTALL),
                      re.compile("\x56\xBE(....)\x56\x68(.)\x00\x00\x00\x6A\x00\xE8", re.DOTALL),
-                     re.compile("\x53\x68(....)\x6A(.)\x56\xFF", re.DOTALL)]
+                     re.compile("\x53\x68(....)\x6A(.)\x56\xFF", re.DOTALL),
+                     re.compile("(.)\x68(...)\x00\x68(.)\x00\x00\x00\x6A\x00\xE8(....)\x83\xc4\x0c", re.DOTALL),
+                     ]
 
 # RC4 key pattern
 RC4_KEY_PATTERNS = [re.compile("\x80\x68\x80\x00\x00\x00\x50\xC7\x40", re.DOTALL),
                     re.compile("\x80\x68\x80\x00\x00\x00(...)\x50\x52\x53\xC7\x40", re.DOTALL),
-                    re.compile("\x8D(..)\x80\xC7\x43", re.DOTALL)
+                    re.compile("\x8D(..)\x80\xC7\x43", re.DOTALL),
+                    re.compile("\x1c\x68\x80\x00\x00\x00\x8d..\x8d(...)\x50\x52\x57\xC7\x40", re.DOTALL),
                     ]
 RC4_KEY_LENGTH = 0x80
 
-# Config pattern
-CONFIG_PATTERNS = [re.compile("\xC3\x90\x68(....)\xE8(....)\x59\x6A\x01\x58\xC3", re.DOTALL),
-                   re.compile("\x6A\x04\x68(....)\x8D(.....)\x56\x50\xE8", re.DOTALL)]
-CONFIG_SIZE = 0x8D4
+# Config pattern -> (regexp, config_size, key_size)
+CONFIG_PATTERNS = [(re.compile("\xC3\x90\x68(....)\xE8....\x59\x6A\x01\x58\xC3", re.DOTALL), 0x8D4, 4),
+                   (re.compile("\x6A\x04\x68(....)\x8D.....\x56\x50\xE8", re.DOTALL), 0x8D4, 4),
+                   (re.compile("\x68...\x00\x68(....)\xE8..\xFF\xFF", re.DOTALL), 0x1000, 128),
+                   ]
 
 parser = argparse.ArgumentParser(description="TSCookie Config Parser")
 parser.add_argument("file", type=str, metavar="FILE", help="TSCookie EXE file")
@@ -140,10 +144,14 @@ def load_resource(pe, data):
 
 
 def main():
-    pe = pefile.PE(args.file)
     with open(args.file, "rb") as fb:
         data = fb.read()
 
+    if data[:2] != b'MZ':
+        print('[-] Not a PE file : %s' % args.file)
+        exit()
+
+    pe = pefile.PE(args.file)
     rc_data = load_resource(pe, data)
     key_end = load_rc4key(data)
     dec_data = decode_resource(rc_data, key_end, args.file + ".decode")
@@ -156,13 +164,14 @@ def main():
     else:
         sys.exit("[!] DLL data not found in decoded resource.")
 
-    for pattern in CONFIG_PATTERNS:
+    for pattern, config_size, config_key_size in CONFIG_PATTERNS:
         mc = re.search(pattern, dll_data)
         if mc:
             try:
-                (config_rva, ) = unpack("=I", dll_data[mc.start() + 3:mc.start() + 7])
+                (config_rva, ) = unpack("=I", mc.group(1))
                 config_addr = dll.get_physical_by_rva(config_rva - dll.NT_HEADERS.OPTIONAL_HEADER.ImageBase)
-                enc_config_data = dll_data[config_addr:config_addr + CONFIG_SIZE]
+                enc_config_data = dll_data[config_addr:config_addr + config_size]
+                enc_config_key_size = config_key_size
                 print("[*] Found config data : 0x{0:X}".format(config_rva))
             except:
                 sys.exit("[!] Config data not found in DLL.")
@@ -177,8 +186,8 @@ def main():
         decode_resource(rc2_data, key_end, args.file + ".2nd.decode")
 
     try:
-        enc_config = enc_config_data[4:]
-        rc4key = enc_config_data[:4]
+        enc_config = enc_config_data[enc_config_key_size:]
+        rc4key = enc_config_data[:enc_config_key_size]
         config = rc4(enc_config, rc4key)
         open(args.file + ".config", "wb").write(enc_config_data)
         print("[*] Successful decoding config: {0}".format(args.file + ".config"))
