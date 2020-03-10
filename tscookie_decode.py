@@ -68,7 +68,7 @@ def __format_string(data):
 
 # Parse config
 def parse_config(config):
-    print("\n[Proxy settings]")
+    print("\n[Config]")
     print("{0}\n".format("-" * 50))
     for i in xrange(4):
         if config[0x10 + 0x100 * i] != "\x00":
@@ -189,7 +189,7 @@ def main():
         enc_config = enc_config_data[enc_config_key_size:]
         rc4key = enc_config_data[:enc_config_key_size]
         config = rc4(enc_config, rc4key)
-        open(args.file + ".config", "wb").write(enc_config_data)
+        open(args.file + ".config", "wb").write(config)
         print("[*] Successful decoding config: {0}".format(args.file + ".config"))
     except:
         sys.exit("[!] Faild to decoding config data.")

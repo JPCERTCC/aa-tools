@@ -84,3 +84,4 @@ Artifact analysis tools by JPCERT/CC Analysis Center
 
   Article/Blog entry:   
   https://blogs.jpcert.or.jp/ja/2019/09/tscookie_loader.html (Japanese)   
+  https://blogs.jpcert.or.jp/en/2019/09/tscookie-loader.html (English)
