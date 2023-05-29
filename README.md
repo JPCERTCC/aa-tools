@@ -1,6 +1,14 @@
 # aa-tools
 Artifact analysis tools by JPCERT/CC Analysis Center
 
+## GobRAT-Analysis
+  C2 Commands Emulation tools in go language that supports analysis of GobRAT malware
+
+  Article/Blog entry:   
+  https://blogs.jpcert.or.jp/ja/2023/05/gobrat.html (Japanese)   
+  https://blogs.jpcert.or.jp/en/2023/05/gobrat.html (English)
+
+
 ## apt17scan.py
   Volatility plugin for detecting APT17 related malware and extracting its config
 
