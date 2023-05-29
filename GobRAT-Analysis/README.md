@@ -62,13 +62,13 @@ The command emulation of this tool does not fully support command execution. Ple
  | 0x31	 | DDoS attacks on SYN, TCP, UDP, HTTP, ICMP |  <ul><li>- [ ] </li></ul> | 
 
 ## More Details
-- Japanese ![https://blogs.jpcert.or.jp/ja/2023/05/gobrat.html](https://blogs.jpcert.or.jp/ja/2023/05/gobrat.html)
-- English ![https://blogs.jpcert.or.jp/en/2023/05/gobrat.html](https://blogs.jpcert.or.jp/en/2023/05/gobrat.html)
+- Japanese https://blogs.jpcert.or.jp/ja/2023/05/gobrat.html
+- English https://blogs.jpcert.or.jp/en/2023/05/gobrat.html
 
 --------
 
 ## Reference
-- Gobs of data ![https://go.dev/blog/gob](https://go.dev/blog/gob)
+- Gobs of data https://go.dev/blog/gob
 
 ## LICENSE
 Please read the [LICENSE](https://github.com/JPCERTCC/aa-tools/blob/master/LICENSE.txt) page.
