@@ -25,11 +25,11 @@ go build GobRAT_Client.go
 
 ## DEMO GobRAT-Server (about 30s)
 
-![](https://github.com/JPCERTCC/aa-tools-private/blob/master/GobRAT-Analysis/image/demo1.gif)
+![](https://github.com/JPCERTCC/aa-tools/blob/master/GobRAT-Analysis/image/demo1.gif)
 
 ## DEMO Client-Server (about 30s)
 
-![](https://github.com/JPCERTCC/aa-tools-private/blob/master/GobRAT-Analysis/image/demo2.gif)
+![](https://github.com/JPCERTCC/aa-tools/blob/master/GobRAT-Analysis/image/demo2.gif)
 
 --- 
 
