@@ -1,6 +1,12 @@
 # aa-tools
 Artifact analysis tools by JPCERT/CC Analysis Center
 
+## Deob_NOOPLDR.py
+  IDA plugin Tool to deobfuscate CFF used by NOOPLDR malware
+
+  Article/Blog entry:   
+  https://blogs.jpcert.or.jp/ja/2024/07/mirrorface.html (Japanese)   
+
 ## GobRAT-Analysis
   C2 Commands Emulation tools in go language that supports analysis of GobRAT malware
 
