@@ -92,7 +92,7 @@ def decode_resource(rc_data, key_end, fname):
         open(fname, "wb").write(dec_data)
         print("[*] Successful decoding resource : {0}".format(fname))
     except:
-        sys.exit("[!] Faild to resource decoding.")
+        sys.exit("[!] Failed to resource decoding.")
     return dec_data
 
 
@@ -124,7 +124,7 @@ def load_resource(pe, data):
                     resource_id = ord(unpack("c", data[mr.start() + 21])[0])
                 break
             except:
-                sys.exit("[!] Faild to load resource id.")
+                sys.exit("[!] Failed to load resource id.")
     if not mr:
         sys.exit("[!] Resource id not found.")
 
@@ -138,7 +138,7 @@ def load_resource(pe, data):
                         rc_data = pe.get_memory_mapped_image()[data_rva:data_rva + size]
                         print("[*] Found resource : {0}({1})".format(str(idx.name), entry.id))
                     except:
-                        sys.exit("[!] Faild to load resource.")
+                        sys.exit("[!] Failed to load resource.")
 
     return rc_data
 
@@ -192,7 +192,7 @@ def main():
         open(args.file + ".config", "wb").write(config)
         print("[*] Successful decoding config: {0}".format(args.file + ".config"))
     except:
-        sys.exit("[!] Faild to decoding config data.")
+        sys.exit("[!] Failed to decoding config data.")
 
     parse_config(config)
 
